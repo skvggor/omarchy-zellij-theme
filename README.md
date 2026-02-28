@@ -1,10 +1,10 @@
 # omarchy-zellij-theme
 
+Syncs your [Zellij](https://zellij.dev/) theme with your [Omarchy](https://omarchy.org/) system theme automatically.
+
 <p align="center">
   <img src="assets/showcase.png" alt="Omarchy Zellij Theme Showcase" width="100%">
 </p>
-
-Syncs your [Zellij](https://zellij.dev/) theme with your [Omarchy](https://omarchy.org/) system theme automatically -- including live sessions.
 
 Every time you run `omarchy-theme-set`, Zellij picks up the same color palette in real time.
 
