@@ -1,0 +1,19 @@
+#!/bin/bash
+
+GENERATED_THEME="$HOME/.config/omarchy/current/theme/zellij.kdl"
+ZELLIJ_CONFIG="$HOME/.config/zellij/config.kdl"
+START_MARKER="// --- omarchy-zellij-theme (start) ---"
+END_MARKER="// --- omarchy-zellij-theme (end) ---"
+
+if [[ ! -f "$GENERATED_THEME" ]] || [[ ! -f "$ZELLIJ_CONFIG" ]]; then
+  exit 0
+fi
+
+# Convert "R,G,B" to "R G B" for Zellij
+THEME_BLOCK=$(sed 's/\([0-9]\{1,3\}\),\([0-9]\{1,3\}\),\([0-9]\{1,3\}\)/\1 \2 \3/g' "$GENERATED_THEME")
+
+# Remove previous theme block if present
+CLEAN_CONFIG=$(sed "\%${START_MARKER}%,\%${END_MARKER}%d" "$ZELLIJ_CONFIG")
+
+# Append new theme block
+printf '%s\n\n%s\n%s\n%s\n' "$CLEAN_CONFIG" "$START_MARKER" "$THEME_BLOCK" "$END_MARKER" > "$ZELLIJ_CONFIG"
