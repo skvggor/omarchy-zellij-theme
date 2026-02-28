@@ -39,8 +39,8 @@ colors.toml ──> omarchy-theme-set-templates ──> zellij.kdl (R,G,B)
 ## Install
 
 ```bash
-git clone <this-repo> ~/Projects/personal/omarchy-zellij-theme
-cd ~/Projects/personal/omarchy-zellij-theme
+git clone https://github.com/skvggor/omarchy-zellij-theme.git
+cd omarchy-zellij-theme
 ./install.sh
 ```
 
@@ -59,7 +59,7 @@ If you already have a custom `~/.config/omarchy/hooks/theme-set`, the installer 
 ## Uninstall
 
 ```bash
-~/Projects/personal/omarchy-zellij-theme/uninstall.sh
+./uninstall.sh
 ```
 
 This reverts everything:
