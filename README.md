@@ -1,4 +1,7 @@
-# omarchy-zellij-theme
+<!-- space between -->
+<h1>
+  omarchy-zellij-theme &nbsp;&nbsp; <img src="https://raw.githubusercontent.com/skvggor/omarchy-zellij-theme/refs/heads/develop/assets/star.svg" alt="Star" height="30" style="vertical-align: middle;" />
+</h1>
 
 Syncs your [Zellij](https://zellij.dev/) theme with your [Omarchy](https://omarchy.org/) system theme automatically.
 
