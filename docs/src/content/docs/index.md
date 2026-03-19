@@ -1,6 +1,6 @@
 ---
 title: "omarchy-zellij-theme"
-description: "Syncs your [Zellij](https://zellij.dev/) theme with your [Omarchy](https://omarchy.org/) system theme automatically."
+description: "Syncs your Zellij theme with your Omarchy system theme automatically."
 ---
 
 Every time you run `omarchy-theme-set`, Zellij picks up the same color palette in real time.
