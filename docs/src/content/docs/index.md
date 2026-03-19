@@ -1,6 +1,6 @@
 ---
 title: "omarchy-zellij-theme"
-description: "omarchy-zellij-theme &nbsp;&nbsp; <img src="https://raw.githubusercontent.com/skvggor/omarchy-zellij-theme/refs/heads/develop/assets/star.svg" alt="Star" height="30" style="vertical-align: middle;" />"
+description: "Syncs your Zellij theme with your Omarchy system theme automatically."
 ---
 
 Every time you run `omarchy-theme-set`, Zellij picks up the same color palette in real time.
