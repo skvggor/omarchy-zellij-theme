@@ -1,0 +1,39 @@
+name: Deploy Docs
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "docs/**"
+      - ".github/workflows/deploy-docs.yml"
+
+jobs:
+  deploy:
+    name: Deploy via SSH
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.2.4
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT || 22 }}
+          script: |
+            bash -c '
+            REPO_URL="git@github.com:${{ github.repository }}.git"
+            DEPLOY_PATH="/root/projects/omarchy-zellij-theme"
+
+            if [ ! -d "$DEPLOY_PATH" ]; then
+              git clone --depth 1 "$REPO_URL" "$DEPLOY_PATH"
+            fi
+
+            cd "$DEPLOY_PATH"
+
+            git fetch origin main
+            git reset --hard origin/main
+
+            docker compose -f docs/compose.yml down || true
+            docker compose -f docs/compose.yml up -d --build
+            '
