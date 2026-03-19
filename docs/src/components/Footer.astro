@@ -1,0 +1,30 @@
+---
+import Default from "@astrojs/starlight/components/Footer.astro";
+---
+
+<Default><slot /></Default>
+<footer class="mugdoc-footer">
+  <p>
+    made with <a href="https://github.com/skvggor/mugdoc">mugdoc</a> and
+    <span aria-label="love" role="img">&hearts;</span>
+  </p>
+</footer>
+
+<style>
+  .mugdoc-footer {
+    padding: 1rem 0;
+    text-align: center;
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+    border-top: 1px solid var(--sl-color-gray-6);
+  }
+
+  .mugdoc-footer a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+  }
+
+  .mugdoc-footer a:hover {
+    text-decoration: underline;
+  }
+</style>
