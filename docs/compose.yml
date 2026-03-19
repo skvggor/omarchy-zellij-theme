@@ -1,18 +1,18 @@
 services:
-  mugdoc-docs:
+  omarchy-zellij-theme-docs:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: mugdoc-docs
+    container_name: omarchy-zellij-theme-docs
     restart: unless-stopped
     networks:
       - caddy_net
     labels:
-      caddy: mugdoc.reposito.rio.br
-      caddy.reverse_proxy: "{{upstreams 3010}}"
+      caddy: omarchy-zellij-theme.reposito.rio.br
+      caddy.reverse_proxy: "{{upstreams 3011}}"
       caddy.encode: "gzip"
     expose:
-      - 3010
+      - 3011
 
 networks:
   caddy_net:
