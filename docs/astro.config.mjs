@@ -10,6 +10,7 @@ export default defineConfig({
       customCss: ["./src/styles/global.css"],
       components: {
         Footer: "./src/components/Footer.astro",
+        PageFrame: "./src/components/PageFrame.astro",
       },
     }),
   ],

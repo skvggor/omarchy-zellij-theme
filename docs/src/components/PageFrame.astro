@@ -1,0 +1,13 @@
+---
+import Default from "@astrojs/starlight/components/PageFrame.astro";
+import StarButton from "./StarButton.astro";
+
+const { ...props } = Astro.props;
+---
+
+<Default {...props}>
+  <slot name="header" slot="header" />
+  <slot name="sidebar" slot="sidebar" />
+  <slot />
+</Default>
+<StarButton />
