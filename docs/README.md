@@ -12,7 +12,7 @@ Generate a documentation site from your project's README using Astro and Starlig
 
 Clone this repo into your project, run `setup.sh`, and get a static documentation site. The setup script detects your project name and description, converts your README into the site content, copies referenced images, installs dependencies, and removes itself.
 
-The generated site is a single page with your README content, no sidebar, and a table of contents on the right.
+The generated site is a single page with your README content, no sidebar, and a table of contents on the right. If you provide `--repo`, a floating "Star on GitHub" button will appear in the bottom-right corner.
 
 ## Usage
 
@@ -27,6 +27,7 @@ git clone --depth 1 git@github.com:skvggor/mugdoc.git docs && rm -rf docs/.git &
 | `--domain` | Base domain for the site URL | Yes |
 | `--deploy` | Absolute path on the server to deploy via SSH | No |
 | `--port` | Container port for the docs site (requires --deploy) | No |
+| `--repo` | URL to your GitHub repository (shows floating star button) | No |
 
 ### Examples
 
@@ -34,6 +35,12 @@ With a custom domain:
 
 ```bash
 ./docs/setup.sh --domain example.com
+```
+
+With original repository link:
+
+```bash
+./docs/setup.sh --domain example.com --repo https://github.com/user/my-project
 ```
 
 Deploy to a VPS:
