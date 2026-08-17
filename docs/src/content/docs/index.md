@@ -57,16 +57,16 @@ cd omarchy-zellij-theme
 The installer:
 
 1. Symlinks `zellij.kdl.tpl` into `~/.config/omarchy/themed/`
-2. Installs the `theme-set` hook into `~/.config/omarchy/hooks/theme-set.d/` (migrating legacy pre-Omarchy 4 hooks)
+2. Installs the `theme-set` hook into `~/.config/omarchy/hooks/theme-set.d/` (migrating legacy pre-Omarchy Quattro hooks)
 3. Adds `theme "omarchy"` to `~/.config/zellij/config.kdl` (creates a timestamped backup first)
 4. Cleans up old theme file from previous approach if present
 5. Generates and injects the current theme inline into `config.kdl`
 
 It is safe to re-run -- the script is idempotent.
 
-## Upgrading to Omarchy 4
+## Upgrading to Omarchy Quattro
 
-Omarchy 4 moved the theme state to `~/.local/state/omarchy/current/` and changed the hook layout. If you installed a previous version of this theme, update and re-run the installer:
+Omarchy Quattro moved the theme state to `~/.local/state/omarchy/current/` and changed the hook layout. If you installed a previous version of this theme, update and re-run the installer:
 
 ```bash
 git pull
@@ -90,7 +90,7 @@ Save your work first: the last install step runs `omarchy theme refresh`, which 
 This reverts everything:
 
 1. Removes the template symlink from `~/.config/omarchy/themed/`
-2. Removes the hook from `~/.config/omarchy/hooks/theme-set.d/` (and any legacy pre-Omarchy 4 integration)
+2. Removes the hook from `~/.config/omarchy/hooks/theme-set.d/` (and any legacy pre-Omarchy Quattro integration)
 3. Comments out `theme "omarchy"` in `~/.config/zellij/config.kdl`
 4. Removes the inline `themes {}` block from `config.kdl`
 5. Cleans up old theme file if present
@@ -109,7 +109,7 @@ Zellij returns to its default theme on the next session.
 
 ## Requirements
 
-- [Omarchy](https://omarchy.org/) 4+ with the template/hook system (`omarchy theme set`, `omarchy theme refresh`)
+- [Omarchy](https://omarchy.org/) Quattro or later with the template/hook system (`omarchy theme set`, `omarchy theme refresh`)
 - [Zellij](https://zellij.dev/) with config at `~/.config/zellij/config.kdl`
 
 ## Usage
