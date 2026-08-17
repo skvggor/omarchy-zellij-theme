@@ -21,7 +21,10 @@ else
 fi
 
 # 2. Remove hook
-if [[ -f "$HOOKS_DIR/theme-set" ]]; then
+if [[ -L "$HOOKS_DIR/theme-set.d/omarchy-zellij-theme" || -f "$HOOKS_DIR/theme-set.d/omarchy-zellij-theme" ]]; then
+  rm "$HOOKS_DIR/theme-set.d/omarchy-zellij-theme"
+  echo "[2/5] Removed theme-set.d hook."
+elif [[ -f "$HOOKS_DIR/theme-set" ]]; then
   if grep -q "omarchy-zellij-theme integration" "$HOOKS_DIR/theme-set" 2>/dev/null; then
     sed -i '/# --- omarchy-zellij-theme integration (start) ---/,/# --- omarchy-zellij-theme integration (end) ---/d' "$HOOKS_DIR/theme-set"
     echo "[2/5] Removed Zellij integration from existing hook."

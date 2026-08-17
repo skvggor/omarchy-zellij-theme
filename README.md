@@ -11,7 +11,7 @@ https://github.com/user-attachments/assets/0be5f3c9-fbba-479c-9f52-bd312aed5a8c
 
 </p>
 
-Every time you run `omarchy-theme-set`, Zellij picks up the same color palette in real time.
+Every time you run `omarchy theme set`, Zellij picks up the same color palette in real time.
 
 ## How it works
 
@@ -56,14 +56,12 @@ cd omarchy-zellij-theme
 The installer:
 
 1. Symlinks `zellij.kdl.tpl` into `~/.config/omarchy/themed/`
-2. Installs the `theme-set` hook into `~/.config/omarchy/hooks/`
+2. Installs the `theme-set` hook into `~/.config/omarchy/hooks/theme-set.d/` (migrating legacy pre-Omarchy 4 hooks)
 3. Adds `theme "omarchy"` to `~/.config/zellij/config.kdl` (creates a timestamped backup first)
 4. Cleans up old theme file from previous approach if present
 5. Generates and injects the current theme inline into `config.kdl`
 
 It is safe to re-run -- the script is idempotent.
-
-If you already have a custom `~/.config/omarchy/hooks/theme-set`, the installer appends the Zellij integration instead of overwriting it.
 
 ## Uninstall
 
@@ -93,7 +91,7 @@ Zellij returns to its default theme on the next session.
 
 ## Requirements
 
-- [Omarchy](https://omarchy.org/) with the template/hook system (`omarchy-theme-set`, `omarchy-theme-set-templates`)
+- [Omarchy](https://omarchy.org/) 4+ with the template/hook system (`omarchy theme set`, `omarchy theme refresh`)
 - [Zellij](https://zellij.dev/) with config at `~/.config/zellij/config.kdl`
 
 ## Usage
@@ -101,9 +99,8 @@ Zellij returns to its default theme on the next session.
 After installing, just use Omarchy as usual:
 
 ```bash
-omarchy-theme-set tokyo-night   # Zellij theme updates instantly (all sessions)
-omarchy-theme-set catppuccin    # same
-omarchy-theme-next              # same
+omarchy theme set tokyo-night   # Zellij theme updates instantly (all sessions)
+omarchy theme set catppuccin    # same
 ```
 
 All Zellij sessions -- including ones already running -- pick up the new theme in real time.
