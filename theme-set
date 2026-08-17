@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GENERATED_THEME="$HOME/.config/omarchy/current/theme/zellij.kdl"
+GENERATED_THEME="$HOME/.local/state/omarchy/current/theme/zellij.kdl"
 ZELLIJ_CONFIG="$HOME/.config/zellij/config.kdl"
 START_MARKER="// --- omarchy-zellij-theme (start) ---"
 END_MARKER="// --- omarchy-zellij-theme (end) ---"
@@ -19,8 +19,8 @@ CLEAN_CONFIG=$(sed "\%${START_MARKER}%,\%${END_MARKER}%d" "$ZELLIJ_CONFIG")
 printf '%s\n\n%s\n%s\n%s\n' "$CLEAN_CONFIG" "$START_MARKER" "$THEME_BLOCK" "$END_MARKER" > "$ZELLIJ_CONFIG"
 
 # --- Theme change notification ---
-THEME_NAME=$(cat "$HOME/.config/omarchy/current/theme.name" 2>/dev/null | tr -d '\n')
-COLORS_FILE="$HOME/.config/omarchy/current/theme/colors.toml"
+THEME_NAME=$(cat "$HOME/.local/state/omarchy/current/theme.name" 2>/dev/null | tr -d '\n')
+COLORS_FILE="$HOME/.local/state/omarchy/current/theme/colors.toml"
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 NOTIFY_SCRIPT="$SCRIPT_DIR/theme-notify"
 
