@@ -15,10 +15,11 @@ Every time you run `omarchy theme set`, Zellij picks up the same color palette i
 
 ## How it works
 
-Omarchy's template engine processes `zellij.kdl.tpl` using the active theme's `colors.toml`, generating a KDL theme block. A `theme-set` hook converts the output from comma-separated RGB (`R,G,B`) to space-separated (`R G B`) and injects the `themes {}` block directly into `~/.config/zellij/config.kdl`. Since Zellij watches its config file, existing sessions hot-reload the new theme instantly.
+Omarchy's template engine processes `zellij.kdl.tpl` using the active theme's `colors.toml`, generating a KDL theme block in `~/.local/state/omarchy/current/theme/zellij.kdl`. A `theme-set` hook converts the output from comma-separated RGB (`R,G,B`) to space-separated (`R G B`) and injects the `themes {}` block directly into `~/.config/zellij/config.kdl`. Since Zellij watches its config file, existing sessions hot-reload the new theme instantly.
 
 ```
-colors.toml ──> omarchy-theme-set-templates ──> zellij.kdl (R,G,B)
+colors.toml ──> omarchy theme set/refresh ──> zellij.kdl (R,G,B)
+                                              ~/.local/state/omarchy/current/theme/
                                                      │
                                                theme-set hook
                                             (sed R,G,B -> R G B)
@@ -63,6 +64,23 @@ The installer:
 
 It is safe to re-run -- the script is idempotent.
 
+## Upgrading to Omarchy 4
+
+Omarchy 4 moved the theme state to `~/.local/state/omarchy/current/` and changed the hook layout. If you installed a previous version of this theme, update and re-run the installer:
+
+```bash
+git pull
+./install.sh
+```
+
+The installer migrates everything automatically:
+
+- Moves the hook from the legacy single-file `~/.config/omarchy/hooks/theme-set` to `~/.config/omarchy/hooks/theme-set.d/omarchy-zellij-theme` (a custom hook of yours is preserved -- only the appended Zellij integration is removed)
+- Re-reads theme state from `~/.local/state/omarchy/current/`
+- Re-injects the current theme into `config.kdl`, replacing any stale theme block
+
+Save your work first: the last install step runs `omarchy theme refresh`, which restarts the terminal as part of applying the theme.
+
 ## Uninstall
 
 ```bash
@@ -72,7 +90,7 @@ It is safe to re-run -- the script is idempotent.
 This reverts everything:
 
 1. Removes the template symlink from `~/.config/omarchy/themed/`
-2. Removes the hook (or just the appended section if you had a pre-existing hook)
+2. Removes the hook from `~/.config/omarchy/hooks/theme-set.d/` (and any legacy pre-Omarchy 4 integration)
 3. Comments out `theme "omarchy"` in `~/.config/zellij/config.kdl`
 4. Removes the inline `themes {}` block from `config.kdl`
 5. Cleans up old theme file if present
